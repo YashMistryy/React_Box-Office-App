@@ -12,7 +12,7 @@ const apiGet = async queryString => {
 
 // below function make it convineint to use apiGet method , using only the query string
 const SearchForShows = (searchString) => {
- return apiGet(`/singlesearch/shows?q=${searchString}`);
+ return apiGet(`/search/shows?q=${searchString}`);
 };
 
 
