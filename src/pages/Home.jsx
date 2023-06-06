@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import SearchForShows from './../api_utils/tvmaze.js'
 
 const Home = () => {
   const [searchValue, setSearchValue] = useState('');
@@ -12,10 +13,11 @@ const Home = () => {
   const onSearch = async (event) => {
     event.preventDefault();
     // here on submitting form we will find the search result and fetch it using fetch API which works asynchronously so lets see
-    const response = await fetch(`https://api.tvmaze.com/singlesearch/shows?q= ${searchValue}`)
-    const body = await response.json()
-    console.log(body)
-    
+    // const response = await fetch(`https://api.tvmaze.com/singlesearch/shows?q= ${searchValue}`)
+    // const body = await response.json()
+    // console.log(body)
+    const result = await SearchForShows(searchValue)
+    console.log(result);
   };
 
   return (
