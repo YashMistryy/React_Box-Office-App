@@ -13,7 +13,7 @@ const ShowsCard = ({name,image,summary})=>{
             <h3>show : {name}</h3>\
             <div>
             <p>{strippedSummary}</p>
-            <Link to='/'>show more</Link>
+            <Link to={`/shows/${name}`}>show more</Link>
             </div>
         </div>
     )
