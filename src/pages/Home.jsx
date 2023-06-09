@@ -1,23 +1,20 @@
-
 /* eslint-disable no-unused-vars */
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import SearchForm from '../components/SearchForm.jsx';
 import { SearchForShows, SearchForActors } from './../api_utils/tvmaze.js';
+import ShowGrid from '../components/shows/ShowGrid.jsx';
+import ActorsGrid from '../components/actors/ActorsGrid.jsx';
 
 const Home = () => {
-  
   //  below state stores the apiData got from searchShows
   const [apiData, setApiData] = useState([]);
   // below state stores the error which occured during fetching of the data
   const [apiDataError, setApiDataError] = useState(null);
-  
 
- 
-
-  const onSearch = async ({searchOptionValue,searchValue}) => {
-  //  this function fetches and set apiData which will be rendered
-  // its logic was shifted to othere component but it still works because it get required data as parameters
+  const onSearch = async ({ searchOptionValue, searchValue }) => {
+    //  this function fetches and set apiData which will be rendered
+    // its logic was shifted to othere component but it still works because it get required data as parameters
 
     try {
       setApiDataError(null);
@@ -42,29 +39,21 @@ const Home = () => {
     if (apiData.length != 0) {
       // if(searchOptionValue === 'shows'){return apiData.map((myShow)=> <div key={myShow.show.id}> {myShow.show.name}</div>)}
       // else{return apiData.map((person)=> <div key={person.person.id}> {person.person.name}</div>)}
-      console.log('----------------------------------------------');
       if (apiData[0].show) {
-        return apiData.map(myShow => (
-          <div key={myShow.show.id}> {myShow.show.name}</div>
-        ));
+        return <ShowGrid apiData={apiData} />;
       } else {
-        return apiData.map(person => (
-          <div key={person.person.id}> {person.person.name}</div>
-        ));
+        return <ActorsGrid apiData={apiData} />;
       }
+    }else{
+      return <div><h1>No Data found</h1></div>
     }
-    return null;
+    // return null;
   };
-
-
-
-
-
 
   return (
     <div>
       <h5>home page</h5>
-      <SearchForm onSearch={onSearch}/>
+      <SearchForm onSearch={onSearch} />
       {/* <form onSubmit={onSearch}>
         <input type="text" value={searchValue} onChange={handleSearchChange} />
         <label htmlFor="">
