@@ -4,6 +4,7 @@ const BASE_URL = 'https://api.tvmaze.com';
 
 // below is the function which get the json body for the search result and it is an aysnc function
 const apiGet = async queryString => {
+  // throw new Error("Something bad happened while fetching the api data!")
   const response = await fetch(`${BASE_URL}/${queryString}`);
   const body = await response.json();
   return body;
@@ -15,5 +16,10 @@ const SearchForShows = (searchString) => {
  return apiGet(`/search/shows?q=${searchString}`);
 };
 
+// below function make it convineint to use apiGet method , using only the query string
+const SearchForActors = (searchString) => {
+  return apiGet(`/search/people?q=${searchString}`);
+ };
 
-export default SearchForShows
+export {SearchForActors,SearchForShows} 
+// export default SearchForShows
