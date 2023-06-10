@@ -6,20 +6,26 @@ import Starred from './pages/Starred';
 import ShowPage from './components/ShowPage';
 import './App.css';
 import MainLayout from './components/MainLayout';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+// we need below for using useQuery custom hook for our app for fetching data
+const queryClient = new QueryClient();
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        {/* we can add more than one routes to shared */}
-        <Route element={<MainLayout/>}>
-          <Route path="/" element={<Home />} />
-          <Route path="/starred" element={<Starred />} />
-          <Route path='/shows/:showId' element={<ShowPage/>} />
-        </Route>
-        <Route path="*" element={<div>Page Not Found</div>} />
-      </Routes>
-    </BrowserRouter>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <Routes>
+          {/* we can add more than one routes to shared */}
+          <Route element={<MainLayout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/starred" element={<Starred />} />
+            <Route path="/shows/:showId" element={<ShowPage />} />
+          </Route>
+          <Route path="*" element={<div>Page Not Found</div>} />
+        </Routes>
+      </BrowserRouter>
+    </QueryClientProvider>
   );
 }
 
