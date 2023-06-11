@@ -1,31 +1,8 @@
 import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
 import { SearchForShow } from '../api_utils/tvmaze';
 import { useQuery } from '@tanstack/react-query';
-
-// const useShowById = showId => {
-//   const [showData, setShowData] = useState(null);
-//   const [showDataError, setShowDataError] = useState(null);
-
-//   // we have uses a mix of useEffect and useState for our data fetching logic
-//   useEffect(() => {
-//     // in here we will fetch data using fetch api
-//     // data will be fetched on mounting of component
-//     async function fetchData() {
-//       // we cant use aysnc keyword for useEffect callback so we created an async func inside our callback function and called it
-//       try {
-//         const resp = await SearchForShow(showId);
-//         console.log({resp})
-//         setShowData(resp);
-//       } catch (err) {
-//         setShowDataError(err.name);
-//       }
-//     }
-//     fetchData();
-//   }, [showId]);
-
-//   return { showData, showDataError };
-// };
+import ShowDetailPage from './shows/ShowDetailPage';
 
 // OUR COMPONENT
 const ShowPage = () => {
@@ -35,6 +12,7 @@ const ShowPage = () => {
   const { data: showData, error: showDataError } = useQuery({
     queryKey: ['show', showId],
     queryFn: () => SearchForShow(showId),
+    refetchOnWindowFocus:false
   });
   if (showDataError) {
     return <h1>error :{showDataError}</h1>;
@@ -42,7 +20,16 @@ const ShowPage = () => {
   if (showData) {
     return (
       <div>
-        {showData.id} | {showData.name} | {showData.language}
+        <ShowDetailPage
+          showSummary={showData.summary}
+          showRating={showData.rating}
+          showName={showData.name}
+          showImage={showData.image}
+          showLang={showData.language}
+          showGenres = {showData.genres}
+          seasons = {showData._embedded.seasons}
+          cast = {showData._embedded.cast}
+        />
       </div>
     );
   }

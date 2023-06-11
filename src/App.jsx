@@ -20,8 +20,8 @@ function App() {
           <Route element={<MainLayout />}>
             <Route path="/" element={<Home />} />
             <Route path="/starred" element={<Starred />} />
-            <Route path="/shows/:showId" element={<ShowPage />} />
           </Route>
+            <Route path="/shows/:showId" element={<ShowPage />} />
           <Route path="*" element={<div>Page Not Found</div>} />
         </Routes>
       </BrowserRouter>
