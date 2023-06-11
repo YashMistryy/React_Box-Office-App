@@ -10,10 +10,6 @@ const ShowDetailPage = ({
   cast,
   seasons
 }) => {
-  console.log({
-    cast,
-    seasons
-  });
   return (
     <div className="showData">
       <h1>this is the show data</h1>

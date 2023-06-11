@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 // import { useEffect, useState } from 'react';
 import { SearchForShow } from '../api_utils/tvmaze';
 import { useQuery } from '@tanstack/react-query';
@@ -15,11 +15,12 @@ const ShowPage = () => {
     refetchOnWindowFocus:false
   });
   if (showDataError) {
-    return <h1>error :{showDataError}</h1>;
+    return <h1>error :{showDataError.name}</h1>;
   }
   if (showData) {
     return (
       <div>
+        <Link to={'/'}>Go back</Link>
         <ShowDetailPage
           showSummary={showData.summary}
           showRating={showData.rating}

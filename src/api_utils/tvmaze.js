@@ -8,7 +8,7 @@ const apiGet = async queryString => {
   // console.log("the url : ",`${BASE_URL}/${queryString}`)
   const response = await fetch(`${BASE_URL}/${queryString}`);
   const body = await response.json();
-  console.log(body)
+  // console.log(body)
   return body;
 };
 
