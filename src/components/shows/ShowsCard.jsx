@@ -14,7 +14,7 @@ const ShowsCard = ({ name, image, summary, showId }) => {
       <h3>show : {name}</h3>
       <div>
         <p>{strippedSummary}</p>
-        <Link to={`/shows/${showId}`}>show more</Link>
+        <Link to={`/shows/${showId}` } target="_blank" rel="noopener noreferrer">show more</Link>
       </div>
     </div>
   );
