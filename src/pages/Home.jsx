@@ -20,7 +20,7 @@ const reducerFn = (currentCounter, action) => {
 
 
 const Home = () => {
-  // useReducer demo
+  // useReducer demo | an alternative to useState
   const [counterValue, dispatch] = useReducer(reducerFn, 0);
 
   
