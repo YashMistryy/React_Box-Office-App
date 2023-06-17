@@ -71,7 +71,6 @@ const Home = () => {
 
   return (
     <div>
-      <h5>home page</h5>
       <SearchForm onSearch={onSearch} />
       <div>{renderApiData()}</div>
     </div>

@@ -1,10 +1,11 @@
 import ShowsCard from './ShowsCard';
-// import { useReducer,useEffect } from 'react';
-import {useStarredShows} from '../lib/StarredShows'
+// import { useReducer,useEffect } from 'react';\
+import { FlexGrid } from '../common/FlexGrid';
+import { useStarredShows } from '../lib/StarredShows';
 
 const ShowGrid = ({ apiData }) => {
-  const [starredShows, dispatchStarredShow] = useStarredShows()
-  
+  const [starredShows, dispatchStarredShow] = useStarredShows();
+
   // console.log({ starredShows });
 
   const onStarredClick = showId => {
@@ -16,17 +17,21 @@ const ShowGrid = ({ apiData }) => {
     }
   };
 
-  return apiData.map(myShow => (
-    <ShowsCard
-      key={myShow.show.id}
-      name={myShow.show.name}
-      image={myShow.show.image ? myShow.show.image.medium : '/image_alt.jpeg'}
-      summary={myShow.show.summary}
-      showId={myShow.show.id}
-      onStarredClick={onStarredClick}
-      isStarred={starredShows.includes(myShow.show.id)}
-    />
-  ));
+  return (
+    <FlexGrid>
+      {apiData.map(myShow => (
+      <ShowsCard
+        key={myShow.show.id}
+        name={myShow.show.name}
+        image={myShow.show.image ? myShow.show.image.medium : '/image_alt.jpeg'}
+        summary={myShow.show.summary}
+        showId={myShow.show.id}
+        onStarredClick={onStarredClick}
+        isStarred={starredShows.includes(myShow.show.id)}
+      />
+      ))}
+    </FlexGrid>
+  );
 };
 
 export default ShowGrid;
