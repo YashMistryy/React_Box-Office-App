@@ -7,13 +7,14 @@ import ShowPage from './components/ShowPage';
 import './App.css';
 import MainLayout from './components/MainLayout';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-
+import { GlobalTheme } from './theme';
 // we need below for using useQuery custom hook for our app for fetching data
 const queryClient = new QueryClient();
 
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
+      <GlobalTheme>
       <BrowserRouter>
         <Routes>
           {/* we can add more than one routes to shared */}
@@ -25,6 +26,7 @@ function App() {
           <Route path="*" element={<div>Page Not Found</div>} />
         </Routes>
       </BrowserRouter>
+      </GlobalTheme>
     </QueryClientProvider>
   );
 }
