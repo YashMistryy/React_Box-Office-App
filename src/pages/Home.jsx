@@ -34,6 +34,7 @@ const Home = () => {
   });
 
   const onSearch = async ({ searchOptionValue, searchValue }) => {
+    // console.log(searchValue,searchOptionValue);
     setFilter({ searchOptionValue, searchValue });
   };
 
@@ -41,17 +42,16 @@ const Home = () => {
     if (apiDataError) {
       return <div>{apiDataError.message}</div>;
     }
+    console.log("datasss",apiData)
 
-    if (apiData) {
-      // if(searchOptionValue === 'shows'){return apiData.map((myShow)=> <div key={myShow.show.id}> {myShow.show.name}</div>)}
-      // else{return apiData.map((person)=> <div key={person.person.id}> {person.person.name}</div>)}
+    if (apiData && apiData.length !=0) {
       if (apiData[0].show) {
         return <ShowGrid apiData={apiData} />;
       } else {
         return <ActorsGrid apiData={apiData} />;
       }
     } else {
-      return null;
+      return (<h1>try searching for shows or actors</h1>);
     }
   };
 
