@@ -27,6 +27,14 @@ const SearchForShow = (showId)=>{
   return apiGet(`shows/${showId}?embed[]=seasons&embed[]=cast`)
 }
 
+const SearchShowsById = async (showIds)=>{
+  // we get an array of show Ids and we are suppose to return an array of promises of data for each show ,so that all data is fetched asynchronously and we dont have to fetch data of shows one by one
+  const promisesArr = showIds.map((showId)=>{return apiGet(`shows/${showId}`)})
+  const res = await Promise.all(promisesArr)
+  console.log("result",res);
+  return res
+}
 
-export {SearchForActors,SearchForShows,SearchForShow} 
+
+export {SearchForActors,SearchForShows,SearchForShow,SearchShowsById} 
 // export default SearchForShows

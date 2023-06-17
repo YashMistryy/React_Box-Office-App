@@ -5,7 +5,7 @@ import {useStarredShows} from '../lib/StarredShows'
 const ShowGrid = ({ apiData }) => {
   const [starredShows, dispatchStarredShow] = useStarredShows()
   
-  console.log({ starredShows });
+  // console.log({ starredShows });
 
   const onStarredClick = showId => {
     const isStarred = starredShows.includes(showId);

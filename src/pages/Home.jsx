@@ -20,21 +20,6 @@ const reducerFn = (currentCounter, action) => {
 
 
 const Home = () => {
-  // useReducer demo | an alternative to useState
-  const [counterValue, dispatch] = useReducer(reducerFn, 0);
-
-  
-
-  const handleIncrement = () => {
-    dispatch({ type: 'Increment' });
-  };
-  const handleDecrement = () => {
-    dispatch({ type: 'Decrement' });
-  };
-  const handleReset = () => {
-    dispatch({ type: 'Reset' });
-  };
-
   // filter helps us to run the function inside the useQuery to fetch the data
   const [filter, setFilter] = useState('');
 
@@ -75,14 +60,7 @@ const Home = () => {
       <h5>home page</h5>
       <SearchForm onSearch={onSearch} />
       <div>{renderApiData()}</div>
-
-      <div className="reducerDemo">
-        <p>{counterValue}</p>
-        <button onClick={handleIncrement}>Increase</button>
-        <button onClick={handleDecrement}>Decrease</button>
-        <button onClick={handleReset}>Reset</button>
-      </div>
-    </div>
+    </div> 
   );
 };
 export default Home;
