@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 // import React from 'react';
-import { Route, Routes, BrowserRouter } from 'react-router-dom';
+import { Route, Routes, BrowserRouter ,HashRouter} from 'react-router-dom';
 import Home from './pages/Home';
 import Starred from './pages/Starred';
 import ShowPage from './components/ShowPage';
@@ -15,7 +15,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <GlobalTheme>
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           {/* we can add more than one routes to shared */}
           <Route element={<MainLayout />}>
@@ -25,7 +25,7 @@ function App() {
             <Route path="/shows/:showId" element={<ShowPage />} />
           <Route path="*" element={<div>Page Not Found</div>} />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
       </GlobalTheme>
     </QueryClientProvider>
   );
