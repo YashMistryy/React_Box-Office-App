@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import ImageAltSrc from '../../asset/image_alt.jpeg'
 
 const Cast = ({ castData }) => {
   return (
@@ -10,7 +11,7 @@ const Cast = ({ castData }) => {
               src={
                 castData.character.image
                   ? castData.character.image.medium
-                  : '/image_alt.jpeg'
+                  : ImageAltSrc
               }
               alt=""
             /></div>

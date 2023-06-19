@@ -2,6 +2,7 @@ import ShowsCard from './ShowsCard';
 // import { useReducer,useEffect } from 'react';\
 import { FlexGrid } from '../common/FlexGrid';
 import { useStarredShows } from '../lib/StarredShows';
+import ImageAltSrc from '../../asset/image_alt.jpeg'
 
 const ShowGrid = ({ apiData }) => {
   const [starredShows, dispatchStarredShow] = useStarredShows();
@@ -23,7 +24,7 @@ const ShowGrid = ({ apiData }) => {
       <ShowsCard
         key={myShow.show.id}
         name={myShow.show.name}
-        image={myShow.show.image ? myShow.show.image.medium : '/image_alt.jpeg'}
+        image={myShow.show.image ? myShow.show.image.medium : ImageAltSrc}
         summary={myShow.show.summary}
         showId={myShow.show.id}
         onStarredClick={onStarredClick}

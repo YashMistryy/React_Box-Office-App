@@ -1,6 +1,7 @@
 import Seasons from './Seasons';
 import Cast from './Cast';
 import styled from 'styled-components';
+import ImageAltSrc from '../../asset/image_alt.jpeg'
 
 const ShowDetailPage = ({
   showName,
@@ -17,7 +18,7 @@ const ShowDetailPage = ({
       <div className='img-wrap'>
 
       <img
-        src={showImage ? showImage.original : '/image_alt.jpeg'}
+        src={showImage ? showImage.original : ImageAltSrc}
         height={1000}
         width={1000}
         alt={showName}

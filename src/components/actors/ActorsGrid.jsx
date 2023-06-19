@@ -1,6 +1,6 @@
 import ActorsCard from './ActorsCard';
 import { FlexGrid } from '../common/FlexGrid';
-
+import ImageAltSrc from '../../asset/image_alt.jpeg'
 const ActorsGrid = ({ apiData }) => {
   // console.log({apiData})
   return (
@@ -10,7 +10,7 @@ const ActorsGrid = ({ apiData }) => {
           key={person.person.id}
           name={person.person.name}
           image={
-            person.person.image ? person.person.image.medium : '/image_alt.jpeg'
+            person.person.image ? person.person.image.medium : ImageAltSrc
           }
           gender={person.person.gender}
           country={person.person.country}
